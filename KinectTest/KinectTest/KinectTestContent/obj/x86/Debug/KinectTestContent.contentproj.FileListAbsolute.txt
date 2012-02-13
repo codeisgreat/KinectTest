@@ -1,0 +1,1 @@
+C:\Users\Cathal\Documents\Visual Studio 2010\Projects\KinectTest\KinectTest\KinectTestContent\obj\x86\Debug\ResolveAssemblyReference.cache

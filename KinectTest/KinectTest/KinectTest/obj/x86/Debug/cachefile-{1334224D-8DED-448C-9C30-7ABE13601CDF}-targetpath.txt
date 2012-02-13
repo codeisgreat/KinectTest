@@ -1,0 +1,2 @@
+Content\overlay.xnb
+Content\reddot.xnb

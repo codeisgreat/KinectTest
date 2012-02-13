@@ -1,0 +1,8 @@
+c:\users\cathal\documents\visual studio 2010\Projects\KinectTest\KinectTest\KinectTest\bin\x86\Debug\KinectTest.exe
+c:\users\cathal\documents\visual studio 2010\Projects\KinectTest\KinectTest\KinectTest\bin\x86\Debug\KinectTest.pdb
+c:\users\cathal\documents\visual studio 2010\Projects\KinectTest\KinectTest\KinectTest\obj\x86\Debug\ResolveAssemblyReference.cache
+c:\users\cathal\documents\visual studio 2010\Projects\KinectTest\KinectTest\KinectTest\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+c:\users\cathal\documents\visual studio 2010\Projects\KinectTest\KinectTest\KinectTest\obj\x86\Debug\KinectTest.exe
+c:\users\cathal\documents\visual studio 2010\Projects\KinectTest\KinectTest\KinectTest\obj\x86\Debug\KinectTest.pdb
+c:\users\cathal\documents\visual studio 2010\Projects\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\overlay.xnb
+C:\Users\Cathal\Documents\Visual Studio 2010\Projects\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\reddot.xnb
