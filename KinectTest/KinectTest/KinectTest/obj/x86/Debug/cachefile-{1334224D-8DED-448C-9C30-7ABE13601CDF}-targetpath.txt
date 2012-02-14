@@ -1,2 +1,4 @@
-Content\overlay.xnb
 Content\reddot.xnb
+Content\arial.xnb
+Content\hazard.xnb
+Content\hazard_hit.xnb

@@ -2,22 +2,40 @@
 <XnaContent xmlns:Pipeline="Microsoft.Xna.Framework.Content.Pipeline">
   <Asset Type="Pipeline:BuildItemCollection">
     <Item>
-      <Source>overlay.png</Source>
-      <Name>overlay</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Cathal\Documents\Visual Studio 2010\Projects\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\overlay.xnb</Output>
-      <Time>2011-06-21T02:31:45.7504422+01:00</Time>
-    </Item>
-    <Item>
       <Source>reddot.png</Source>
       <Name>reddot</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Cathal\Documents\Visual Studio 2010\Projects\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\reddot.xnb</Output>
+      <Output>C:\gitrepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\reddot.xnb</Output>
       <Time>2012-02-13T22:08:13.5763624+00:00</Time>
+    </Item>
+    <Item>
+      <Source>arial.spritefont</Source>
+      <Name>arial</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\gitrepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\arial.xnb</Output>
+      <Time>2012-02-14T00:21:28.6590653+00:00</Time>
+    </Item>
+    <Item>
+      <Source>hazard.png</Source>
+      <Name>hazard</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\gitrepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\hazard.xnb</Output>
+      <Time>2012-02-14T00:37:43.4770286+00:00</Time>
+    </Item>
+    <Item>
+      <Source>hazard_hit.png</Source>
+      <Name>hazard_hit</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\gitrepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\hazard_hit.xnb</Output>
+      <Time>2012-02-14T00:37:41.0548926+00:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -25,10 +43,10 @@
       <TargetProfile>HiDef</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>C:\Users\Cathal\Documents\Visual Studio 2010\Projects\KinectTest\KinectTest\KinectTestContent\</RootDirectory>
-      <LoggerRootDirectory>C:\Users\Cathal\Documents\Visual Studio 2010\Projects\KinectTest\KinectTest\KinectTest\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\Users\Cathal\Documents\Visual Studio 2010\Projects\KinectTest\KinectTest\KinectTestContent\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>C:\Users\Cathal\Documents\Visual Studio 2010\Projects\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>C:\gitrepository\KinectTest\KinectTest\KinectTestContent\</RootDirectory>
+      <LoggerRootDirectory>C:\gitrepository\KinectTest\KinectTest\KinectTest\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\gitrepository\KinectTest\KinectTest\KinectTestContent\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\gitrepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>

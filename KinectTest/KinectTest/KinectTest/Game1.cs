@@ -20,11 +20,14 @@ namespace KinectTest
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        SpriteFont font;
         Runtime kinectSensor;
-        Texture2D kinectRGBVideo,overlay,redDot;
-        Vector2 position;
-        Vector2 resolution;
+        Texture2D kinectRGBVideo;
+        Vector2 position,font_pos,resolution,hazard_pos;
+        Sprite hazard,hazard_hit;
+        Texture2D controller;
 
+        string message = "Collision: false";
 
         public Game1()
         {
@@ -47,6 +50,7 @@ namespace KinectTest
             kinectSensor = Runtime.Kinects[0];
             kinectSensor.Initialize(RuntimeOptions.UseColor | RuntimeOptions.UseSkeletalTracking);
             resolution = new Vector2(640,480);
+            //rect = new Rectangle(0,0, 10, 10);
             kinectSensor.SkeletonEngine.TransformSmooth = true;
             TransformSmoothParameters p = new TransformSmoothParameters
             {
@@ -75,19 +79,24 @@ namespace KinectTest
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
+            font = Content.Load<SpriteFont>("Arial");
 
             kinectRGBVideo = new Texture2D(GraphicsDevice, 1337, 1337);
-            
-            // TODO: use this.Content to load your game content here
-            overlay = Content.Load<Texture2D>("overlay");
-            redDot = Content.Load<Texture2D>("reddot");
 
+            controller = Content.Load<Texture2D>("reddot");
             
+            hazard = new Sprite();
+            hazard_hit = new Sprite();
+
+            //controller.Texture = Content.Load<Texture2D>("reddot");
+            hazard.Texture = Content.Load<Texture2D>("hazard");
+            hazard.Position = hazard_pos = new Vector2(300, 50);
+            hazard_hit.Texture = Content.Load<Texture2D>("hazard_hit");
+            hazard_hit.Position = hazard_pos = new Vector2(500, 50);
         }
+
         void kinectSensor_SkeletonFrameReady(object sender, SkeletonFrameReadyEventArgs e)
         {
-            
-
             try
             {
                 SkeletonFrame allSkeletons = e.SkeletonFrame;
@@ -97,7 +106,7 @@ namespace KinectTest
             }
             catch
             {
-                Console.WriteLine("Holy Gawd i broke it!!!");
+                //Console.WriteLine("Holy Gawd i broke it!!!");
             }
 
         }
@@ -139,8 +148,8 @@ namespace KinectTest
             {
                 angle = 0;
             }
-            
         }
+
         void kinectSensor_VideoFrameReady(object sender, ImageFrameReadyEventArgs e)
         {
             PlanarImage p = e.ImageFrame.Image;
@@ -160,42 +169,35 @@ namespace KinectTest
 
             kinectRGBVideo.SetData(color);
         }
-        /// <summary>
-        /// UnloadContent will be called once per game and is the place to unload
-        /// all content.
-        /// </summary>
+
         protected override void UnloadContent()
         {
             // TODO: Unload any non ContentManager content here
             kinectSensor.Uninitialize();
         }
-
-        /// <summary>
-        /// Allows the game to run logic such as updating the world,
-        /// checking for collisions, gathering input, and playing audio.
-        /// </summary>
-        /// <param name="gameTime">Provides a snapshot of timing values.</param>
-        protected override void Update(GameTime gameTime)
+        private void HandleCollisions()
         {
-            KeyboardState state = new KeyboardState();
+            //test
+            //Console.WriteLine("test");
+           /* if (controller.BoundingBox.Intersects(hazard.BoundingBox))
+            {
+                hazard = hazard_hit;
+                message = "Collision: true";
+                Console.WriteLine("collision");
+            }*/
+
+        }
+        protected override void Update(GameTime gameTime)
+        {            
             // Allows the game to exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
-            if (state.IsKeyDown(Keys.Up))
-            {
-                TiltKinectUp(5);
-            }
-            if (state.IsKeyDown(Keys.Down))
-            {
-                TiltKinectDown(5);
-
-            }
-            // TODO: Add your update logic here
-            
-            
+            HandleCollisions();
+            Console.WriteLine(controller.Bounds);
             base.Update(gameTime);
         }
 
+        
       
         /// <summary>
         /// This is called when the game should draw itself.
@@ -208,9 +210,12 @@ namespace KinectTest
             // TODO: Add your drawing code here
             spriteBatch.Begin();
             spriteBatch.Draw(kinectRGBVideo, new Rectangle(0, 0, 640, 480), Color.White);
-            spriteBatch.Draw(overlay, new Rectangle(0, 0, 640, 480), Color.White);
-            spriteBatch.Draw(redDot, position, Color.White);
-            Console.WriteLine(position);
+            spriteBatch.DrawString(font, message, font_pos = new Vector2(0, 0), Color.White);
+            
+           // controller.Draw(spriteBatch,position);
+           // hazard.Draw(spriteBatch);
+            spriteBatch.Draw(controller, position, new Rectangle(0, 0, 10, 10), Color.White);
+           // Console.WriteLine(position);
             spriteBatch.End();
 
             base.Draw(gameTime);

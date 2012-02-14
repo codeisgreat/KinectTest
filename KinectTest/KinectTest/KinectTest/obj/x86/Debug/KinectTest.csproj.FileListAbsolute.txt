@@ -6,3 +6,13 @@ c:\users\cathal\documents\visual studio 2010\Projects\KinectTest\KinectTest\Kine
 c:\users\cathal\documents\visual studio 2010\Projects\KinectTest\KinectTest\KinectTest\obj\x86\Debug\KinectTest.pdb
 c:\users\cathal\documents\visual studio 2010\Projects\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\overlay.xnb
 C:\Users\Cathal\Documents\Visual Studio 2010\Projects\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\reddot.xnb
+C:\gitrepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\reddot.xnb
+C:\gitrepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\KinectTest.exe
+C:\gitrepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\KinectTest.pdb
+C:\gitrepository\KinectTest\KinectTest\KinectTest\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\gitrepository\KinectTest\KinectTest\KinectTest\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\gitrepository\KinectTest\KinectTest\KinectTest\obj\x86\Debug\KinectTest.exe
+C:\gitrepository\KinectTest\KinectTest\KinectTest\obj\x86\Debug\KinectTest.pdb
+C:\gitrepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\arial.xnb
+C:\gitrepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\hazard.xnb
+C:\gitrepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\hazard_hit.xnb
