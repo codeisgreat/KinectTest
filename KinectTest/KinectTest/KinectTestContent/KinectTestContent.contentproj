@@ -61,6 +61,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="hazard_hit.png">
       <Name>hazard_hit</Name>
       <Importer>TextureImporter</Importer>

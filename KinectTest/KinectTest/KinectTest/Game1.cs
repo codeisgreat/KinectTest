@@ -24,10 +24,13 @@ namespace KinectTest
         Runtime kinectSensor;
         Texture2D kinectRGBVideo;
         Vector2 position,font_pos,resolution,hazard_pos;
-        Sprite hazard,hazard_hit;
-        Texture2D controller;
+        Texture2D controller,hazard;
+        Color[] controller_data,hazard_data;
+
 
         string message = "Collision: false";
+        bool controllerHit = false;
+
 
         public Game1()
         {
@@ -50,6 +53,7 @@ namespace KinectTest
             kinectSensor = Runtime.Kinects[0];
             kinectSensor.Initialize(RuntimeOptions.UseColor | RuntimeOptions.UseSkeletalTracking);
             resolution = new Vector2(640,480);
+            hazard_pos = new Vector2(400, 150);
             //rect = new Rectangle(0,0, 10, 10);
             kinectSensor.SkeletonEngine.TransformSmooth = true;
             TransformSmoothParameters p = new TransformSmoothParameters
@@ -84,15 +88,14 @@ namespace KinectTest
             kinectRGBVideo = new Texture2D(GraphicsDevice, 1337, 1337);
 
             controller = Content.Load<Texture2D>("reddot");
-            
-            hazard = new Sprite();
-            hazard_hit = new Sprite();
+            hazard = Content.Load<Texture2D>("hazard");
 
-            //controller.Texture = Content.Load<Texture2D>("reddot");
-            hazard.Texture = Content.Load<Texture2D>("hazard");
-            hazard.Position = hazard_pos = new Vector2(300, 50);
-            hazard_hit.Texture = Content.Load<Texture2D>("hazard_hit");
-            hazard_hit.Position = hazard_pos = new Vector2(500, 50);
+            controller_data = new Color[controller.Width * controller.Height];
+            controller.GetData(controller_data);
+
+            hazard_data = new Color[hazard.Width * hazard.Height];
+            hazard.GetData(hazard_data);
+            
         }
 
         void kinectSensor_SkeletonFrameReady(object sender, SkeletonFrameReadyEventArgs e)
@@ -175,30 +178,29 @@ namespace KinectTest
             // TODO: Unload any non ContentManager content here
             kinectSensor.Uninitialize();
         }
-        private void HandleCollisions()
-        {
-            //test
-            //Console.WriteLine("test");
-           /* if (controller.BoundingBox.Intersects(hazard.BoundingBox))
-            {
-                hazard = hazard_hit;
-                message = "Collision: true";
-                Console.WriteLine("collision");
-            }*/
 
-        }
         protected override void Update(GameTime gameTime)
         {            
             // Allows the game to exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
-            HandleCollisions();
             Console.WriteLine(controller.Bounds);
-            base.Update(gameTime);
-        }
 
-        
-      
+            Rectangle controllerRectangle = new Rectangle((int)position.X, (int)position.Y, controller.Width, controller.Height);
+            Rectangle hazardRectangle = new Rectangle((int)hazard_pos.X, (int)hazard_pos.Y, hazard.Width, hazard.Height);
+
+            if (IntersectPixels(controllerRectangle, controller_data, hazardRectangle, hazard_data))
+            {
+                controllerHit = true;
+            }
+            else
+            {
+                controllerHit = false;
+            }
+
+            base.Update(gameTime);
+        }    
+
         /// <summary>
         /// This is called when the game should draw itself.
         /// </summary>
@@ -214,11 +216,52 @@ namespace KinectTest
             
            // controller.Draw(spriteBatch,position);
            // hazard.Draw(spriteBatch);
-            spriteBatch.Draw(controller, position, new Rectangle(0, 0, 10, 10), Color.White);
+            spriteBatch.Draw(controller, position, Color.White);
+            spriteBatch.Draw(hazard, hazard_pos, Color.White);
+
+            if (controllerHit == true)
+            {
+                message = "Collision: true";
+                hazard = Content.Load<Texture2D>("hazard_hit");
+            }
+            else
+            {
+                message = "Collision: false";
+                hazard = Content.Load<Texture2D>("hazard");
+            }
            // Console.WriteLine(position);
             spriteBatch.End();
 
             base.Draw(gameTime);
+        }
+
+        static bool IntersectPixels(Rectangle rectangleA, Color[] dataA, Rectangle rectangleB, Color[] dataB)
+        {
+
+            // Find the bounds of the rectangle intersection
+            int top = Math.Max(rectangleA.Top, rectangleB.Top);
+            int bottom = Math.Min(rectangleA.Bottom, rectangleB.Bottom);
+            int left = Math.Max(rectangleA.Left, rectangleB.Left);
+            int right = Math.Min(rectangleA.Right, rectangleB.Right);
+
+            // Check every point within the intersection bounds
+            for (int y = top; y < bottom; y++)
+            {
+                for (int x = left; x < right; x++)
+                {
+                    // Get the color of both pixels at this point
+                    Color colorA = dataA[(x - rectangleA.Left) + (y - rectangleA.Top) * rectangleA.Width];
+                    Color colorB = dataB[(x - rectangleB.Left) + (y - rectangleB.Top) * rectangleB.Width];
+                    // If both pixels are not completely transparent,
+                    if (colorA.A != 0 && colorB.A != 0)
+                    {
+                        // then an intersection has been found
+                        return true;
+                    }
+                }
+            }
+            // No intersection found
+            return false;
         }
     }
 }
