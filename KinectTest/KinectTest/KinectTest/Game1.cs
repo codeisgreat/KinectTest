@@ -9,6 +9,10 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using Microsoft.Research.Kinect.Nui;
+using Microsoft.Research.Kinect.Audio;
+using Microsoft.Speech.AudioFormat;
+using Microsoft.Speech.Recognition;
+using System.IO;
 
 
 namespace KinectTest
@@ -27,6 +31,12 @@ namespace KinectTest
         Texture2D controller,hazard;
         Color[] controller_data,hazard_data;
 
+        KinectAudioSource kinectSource;
+        SpeechRecognitionEngine speechEngine;
+        Stream stream;
+        string RecognizerId = "SR_MS_en-US_Kinect_10.0";
+        string speechMsg;
+        bool speechNotRecognized;
 
         string message = "Collision: false";
         bool controllerHit = false;
@@ -36,7 +46,7 @@ namespace KinectTest
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-            
+
             graphics.PreferredBackBufferWidth = 640;
             graphics.PreferredBackBufferHeight = 480;
         }
@@ -52,9 +62,9 @@ namespace KinectTest
             //Set up kinect and initialize it to use colour
             kinectSensor = Runtime.Kinects[0];
             kinectSensor.Initialize(RuntimeOptions.UseColor | RuntimeOptions.UseSkeletalTracking);
-            resolution = new Vector2(640,480);
+            resolution = new Vector2(640, 480);
             hazard_pos = new Vector2(400, 150);
-            //rect = new Rectangle(0,0, 10, 10);
+
             kinectSensor.SkeletonEngine.TransformSmooth = true;
             TransformSmoothParameters p = new TransformSmoothParameters
             {
@@ -71,6 +81,42 @@ namespace KinectTest
             kinectSensor.VideoStream.Open(ImageStreamType.Video, 2, ImageResolution.Resolution640x480, ImageType.Color);
             kinectSensor.VideoFrameReady += new EventHandler<ImageFrameReadyEventArgs>(kinectSensor_VideoFrameReady);
             //TiltKinectUp(5);
+
+            kinectSource = new KinectAudioSource();
+            kinectSource.FeatureMode = true;
+            kinectSource.AutomaticGainControl = false;
+            kinectSource.SystemMode = SystemMode.OptibeamArrayOnly;
+
+            var rec = (from r in SpeechRecognitionEngine.InstalledRecognizers() where r.Id == RecognizerId select r).FirstOrDefault();
+
+            speechEngine = new SpeechRecognitionEngine(rec.Id);
+
+            var choices = new Choices();
+            choices.Add("scalpal");
+            choices.Add("syringe");
+            choices.Add("suction");
+            GrammarBuilder gb = new GrammarBuilder();
+            gb.Culture = rec.Culture;
+            gb.Append(choices);
+
+            var g = new Grammar(gb);
+
+            speechEngine.LoadGrammar(g);
+            speechEngine.SpeechHypothesized += new EventHandler<SpeechHypothesizedEventArgs>(sre_SpeechHypothesized);
+            speechEngine.SpeechRecognized += new EventHandler<SpeechRecognizedEventArgs>(sre_SpeechRecognized);
+            speechEngine.SpeechRecognitionRejected += new EventHandler<SpeechRecognitionRejectedEventArgs>(sre_SpeechRecognitionRejected);
+
+            Console.WriteLine("Recognizing Speech");
+
+            stream = kinectSource.Start();
+
+            speechEngine.SetInputToAudioStream(stream,
+                          new SpeechAudioFormatInfo(
+                              EncodingFormat.Pcm, 16000, 16, 1,
+                              32000, 2, null));
+
+
+            speechEngine.RecognizeAsync(RecognizeMode.Multiple);
             base.Initialize();
             
         }
@@ -152,6 +198,34 @@ namespace KinectTest
                 angle = 0;
             }
         }
+        void sre_SpeechRecognitionRejected(object sender, SpeechRecognitionRejectedEventArgs e)
+        {
+            Console.Write("\rSpeech Rejected: \t{0}", e.Result.Text);
+            speechNotRecognized = true;
+        }
+
+        void sre_SpeechHypothesized(object sender, SpeechHypothesizedEventArgs e)
+        {
+            Console.Write("\rSpeech Hypothesized: \t{0}", e.Result.Text);
+        }
+
+        void sre_SpeechRecognized(object sender, SpeechRecognizedEventArgs e)
+        {
+            speechNotRecognized = false;
+            if (e.Result.Text == "scalpal")
+            {
+                speechMsg = ": Scalpal Selected!";
+            }
+            else if (e.Result.Text == "syringe")
+            {
+                speechMsg = ": Syringe Selected!";
+            }
+            else if (e.Result.Text == "suction")
+            {
+                speechMsg = ": Suction Selected!";
+            }
+            Console.Write("\rSpeech Recognized: \t{0} \n", e.Result.Text);
+        }
 
         void kinectSensor_VideoFrameReady(object sender, ImageFrameReadyEventArgs e)
         {
@@ -212,7 +286,8 @@ namespace KinectTest
             // TODO: Add your drawing code here
             spriteBatch.Begin();
             spriteBatch.Draw(kinectRGBVideo, new Rectangle(0, 0, 640, 480), Color.White);
-            spriteBatch.DrawString(font, message, font_pos = new Vector2(0, 0), Color.White);
+            spriteBatch.DrawString(font, message, font_pos = new Vector2(0, 430), Color.White);
+            spriteBatch.DrawString(font, "Speech Recognition"+speechMsg, font_pos = new Vector2(0, 450), Color.White);
             
            // controller.Draw(spriteBatch,position);
            // hazard.Draw(spriteBatch);
