@@ -22,25 +22,24 @@ namespace KinectTest
     /// </summary>
     public class Game1 : Microsoft.Xna.Framework.Game
     {
-        GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
-        SpriteFont font;
-        Runtime kinectSensor;
-        Texture2D kinectRGBVideo;
-        Vector2 position,font_pos,resolution,hazard_pos;
-        Texture2D controller,hazard;
-        Color[] controller_data,hazard_data;
-
+        
         KinectAudioSource kinectSource;
+        Runtime kinectSensor;
+        SkeletonData skeleton;
         SpeechRecognitionEngine speechEngine;
         Stream stream;
-        string RecognizerId = "SR_MS_en-US_Kinect_10.0";
+        GraphicsDeviceManager graphics;
+        SpriteBatch spriteBatch;
+        SpriteFont font;              
+        Vector2 position,font_pos,resolution,hazard_pos;
+        Texture2D kinectRGBVideo,controller, hazard;
+        Color[] controller_data,hazard_data;        
+
         string speechMsg;
-        bool speechNotRecognized;
-
+        string RecognizerId = "SR_MS_en-US_Kinect_10.0";      
         string message = "Collision: false";
-        bool controllerHit = false;
 
+        bool controllerHit = false;
 
         public Game1()
         {
@@ -59,11 +58,15 @@ namespace KinectTest
         /// </summary>
         protected override void Initialize()
         {
-            //Set up kinect and initialize it to use colour
-            kinectSensor = Runtime.Kinects[0];
-            kinectSensor.Initialize(RuntimeOptions.UseColor | RuntimeOptions.UseSkeletalTracking);
             resolution = new Vector2(640, 480);
             hazard_pos = new Vector2(400, 150);
+
+            kinectSensor = Runtime.Kinects[0];            
+            kinectSensor.Initialize(RuntimeOptions.UseColor | RuntimeOptions.UseSkeletalTracking);
+            kinectSensor.SkeletonFrameReady += new EventHandler<SkeletonFrameReadyEventArgs>(nui_SkeletonFrameReady);
+            kinectSensor.NuiCamera.ElevationAngle = 5;
+            kinectSensor.VideoStream.Open(ImageStreamType.Video, 2, ImageResolution.Resolution640x480, ImageType.Color);
+            kinectSensor.VideoFrameReady += new EventHandler<ImageFrameReadyEventArgs>(kinectSensor_VideoFrameReady);
 
             kinectSensor.SkeletonEngine.TransformSmooth = true;
             TransformSmoothParameters p = new TransformSmoothParameters
@@ -75,12 +78,6 @@ namespace KinectTest
                 MaxDeviationRadius = 0.04f
             };
             kinectSensor.SkeletonEngine.SmoothParameters = p;
-
-
-            kinectSensor.SkeletonFrameReady += new EventHandler<SkeletonFrameReadyEventArgs>(kinectSensor_SkeletonFrameReady);
-            kinectSensor.VideoStream.Open(ImageStreamType.Video, 2, ImageResolution.Resolution640x480, ImageType.Color);
-            kinectSensor.VideoFrameReady += new EventHandler<ImageFrameReadyEventArgs>(kinectSensor_VideoFrameReady);
-            //TiltKinectUp(5);
 
             kinectSource = new KinectAudioSource();
             kinectSource.FeatureMode = true;
@@ -144,87 +141,17 @@ namespace KinectTest
             
         }
 
-        void kinectSensor_SkeletonFrameReady(object sender, SkeletonFrameReadyEventArgs e)
+        void nui_SkeletonFrameReady(object sender, SkeletonFrameReadyEventArgs e)
         {
-            try
+            foreach (SkeletonData s in e.SkeletonFrame.Skeletons)
             {
-                SkeletonFrame allSkeletons = e.SkeletonFrame;
-                SkeletonData playerSkeleton = (from s in allSkeletons.Skeletons where s.TrackingState == SkeletonTrackingState.Tracked select s).FirstOrDefault();
-                Joint rightHandJoint = playerSkeleton.Joints[JointID.HandRight];
-                position = new Vector2((((0.5f * rightHandJoint.Position.X) + 0.5f) * (resolution.X)), (((-0.5f * rightHandJoint.Position.Y) + 0.5f) * (resolution.Y)));
-            }
-            catch
-            {
-                //Console.WriteLine("Holy Gawd i broke it!!!");
-            }
-
-        }
-        //pass a value to tilt up by that much
-        public void TiltKinectUp(int angle)
-        {
-            if (kinectSensor.NuiCamera.ElevationAngle < Camera.ElevationMaximum)
-            {
-                try
-                {                   
-                    kinectSensor.NuiCamera.ElevationAngle += angle;   
-                }
-                catch (Exception e)
+                if (s.TrackingState == SkeletonTrackingState.Tracked)
                 {
-                    Console.WriteLine(e.ToString() + " - no up tilt");
+                    skeleton = s;
+                    Joint rightHandJoint = skeleton.Joints[JointID.HandRight];
+                    position = new Vector2((((0.5f * rightHandJoint.Position.X) + 0.5f) * (resolution.X)), (((-0.5f * rightHandJoint.Position.Y) + 0.5f) * (resolution.Y)));
                 }
             }
-            else
-            {
-                angle = 0;
-            }
-            
-        }
-
-        public void TiltKinectDown(int angle)
-        {
-            if (kinectSensor.NuiCamera.ElevationAngle > Camera.ElevationMinimum)
-            {
-                try
-                {                   
-                    kinectSensor.NuiCamera.ElevationAngle -= angle;
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.ToString() + " - no down tilt");
-                }
-            }
-            else
-            {
-                angle = 0;
-            }
-        }
-        void sre_SpeechRecognitionRejected(object sender, SpeechRecognitionRejectedEventArgs e)
-        {
-            Console.Write("\rSpeech Rejected: \t{0}", e.Result.Text);
-            speechNotRecognized = true;
-        }
-
-        void sre_SpeechHypothesized(object sender, SpeechHypothesizedEventArgs e)
-        {
-            Console.Write("\rSpeech Hypothesized: \t{0}", e.Result.Text);
-        }
-
-        void sre_SpeechRecognized(object sender, SpeechRecognizedEventArgs e)
-        {
-            speechNotRecognized = false;
-            if (e.Result.Text == "scalpal")
-            {
-                speechMsg = ": Scalpal Selected!";
-            }
-            else if (e.Result.Text == "syringe")
-            {
-                speechMsg = ": Syringe Selected!";
-            }
-            else if (e.Result.Text == "suction")
-            {
-                speechMsg = ": Suction Selected!";
-            }
-            Console.Write("\rSpeech Recognized: \t{0} \n", e.Result.Text);
         }
 
         void kinectSensor_VideoFrameReady(object sender, ImageFrameReadyEventArgs e)
@@ -243,27 +170,54 @@ namespace KinectTest
                     new Color(p.Bits[index + 2], p.Bits[index + 1], p.Bits[index + 0]);
                 }
             }
-
             kinectRGBVideo.SetData(color);
         }
+
+        void sre_SpeechRecognitionRejected(object sender, SpeechRecognitionRejectedEventArgs e)
+        {
+            Console.Write("\rSpeech Rejected: \t{0}", e.Result.Text);
+            //speechNotRecognized = true;
+        }
+
+        void sre_SpeechHypothesized(object sender, SpeechHypothesizedEventArgs e)
+        {
+            Console.Write("\rSpeech Hypothesized: \t{0}", e.Result.Text);
+        }
+
+        void sre_SpeechRecognized(object sender, SpeechRecognizedEventArgs e)
+        {
+            //speechNotRecognized = false;
+            if (e.Result.Text == "scalpal")
+            {
+                speechMsg = ": Scalpal Selected!";
+            }
+            else if (e.Result.Text == "syringe")
+            {
+                speechMsg = ": Syringe Selected!";
+            }
+            else if (e.Result.Text == "suction")
+            {
+                speechMsg = ": Suction Selected!";
+            }
+            Console.Write("\rSpeech Recognized: \t{0} \n", e.Result.Text);
+        }
+
+        
 
         protected override void UnloadContent()
         {
             // TODO: Unload any non ContentManager content here
             kinectSensor.Uninitialize();
+            base.UnloadContent();
         }
 
         protected override void Update(GameTime gameTime)
         {            
-            // Allows the game to exit
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
-                this.Exit();
-            Console.WriteLine(controller.Bounds);
 
             Rectangle controllerRectangle = new Rectangle((int)position.X, (int)position.Y, controller.Width, controller.Height);
             Rectangle hazardRectangle = new Rectangle((int)hazard_pos.X, (int)hazard_pos.Y, hazard.Width, hazard.Height);
-
-            if (IntersectPixels(controllerRectangle, controller_data, hazardRectangle, hazard_data))
+            CollisionDetection collision = new CollisionDetection();
+            if (collision.IntersectPixel(controllerRectangle, controller_data, hazardRectangle, hazard_data))
             {
                 controllerHit = true;
             }
@@ -282,61 +236,27 @@ namespace KinectTest
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-
-            // TODO: Add your drawing code here
             spriteBatch.Begin();
-            spriteBatch.Draw(kinectRGBVideo, new Rectangle(0, 0, 640, 480), Color.White);
-            spriteBatch.DrawString(font, message, font_pos = new Vector2(0, 430), Color.White);
-            spriteBatch.DrawString(font, "Speech Recognition"+speechMsg, font_pos = new Vector2(0, 450), Color.White);
-            
-           // controller.Draw(spriteBatch,position);
-           // hazard.Draw(spriteBatch);
-            spriteBatch.Draw(controller, position, Color.White);
-            spriteBatch.Draw(hazard, hazard_pos, Color.White);
 
-            if (controllerHit == true)
-            {
-                message = "Collision: true";
-                hazard = Content.Load<Texture2D>("hazard_hit");
-            }
-            else
-            {
-                message = "Collision: false";
-                hazard = Content.Load<Texture2D>("hazard");
-            }
-           // Console.WriteLine(position);
-            spriteBatch.End();
+                spriteBatch.Draw(kinectRGBVideo, new Rectangle(0, 0, 640, 480), Color.White);
+                spriteBatch.DrawString(font, message, font_pos = new Vector2(0, 430), Color.White);
+                spriteBatch.DrawString(font, "Speech Recognition"+speechMsg, font_pos = new Vector2(0, 450), Color.White);
+                spriteBatch.Draw(controller, position, Color.White);
+                spriteBatch.Draw(hazard, hazard_pos, Color.White);
 
-            base.Draw(gameTime);
-        }
-
-        static bool IntersectPixels(Rectangle rectangleA, Color[] dataA, Rectangle rectangleB, Color[] dataB)
-        {
-
-            // Find the bounds of the rectangle intersection
-            int top = Math.Max(rectangleA.Top, rectangleB.Top);
-            int bottom = Math.Min(rectangleA.Bottom, rectangleB.Bottom);
-            int left = Math.Max(rectangleA.Left, rectangleB.Left);
-            int right = Math.Min(rectangleA.Right, rectangleB.Right);
-
-            // Check every point within the intersection bounds
-            for (int y = top; y < bottom; y++)
-            {
-                for (int x = left; x < right; x++)
+                if (controllerHit == true)
                 {
-                    // Get the color of both pixels at this point
-                    Color colorA = dataA[(x - rectangleA.Left) + (y - rectangleA.Top) * rectangleA.Width];
-                    Color colorB = dataB[(x - rectangleB.Left) + (y - rectangleB.Top) * rectangleB.Width];
-                    // If both pixels are not completely transparent,
-                    if (colorA.A != 0 && colorB.A != 0)
-                    {
-                        // then an intersection has been found
-                        return true;
-                    }
+                    message = "Collision: true";
+                    hazard = Content.Load<Texture2D>("hazard_hit");
                 }
-            }
-            // No intersection found
-            return false;
-        }
+                else
+                {
+                    message = "Collision: false";
+                    hazard = Content.Load<Texture2D>("hazard");
+                }
+
+            spriteBatch.End();
+            base.Draw(gameTime);
+        }      
     }
 }
