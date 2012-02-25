@@ -21,16 +21,17 @@ namespace KinectTest
     {
 
         Runtime kinectSensor;
-        SkeletonData skeleton;
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         SpriteFont font;
-        Vector2 position, font_pos, resolution, hazard_pos;
+        Vector2 position,font_pos, hazard_pos;
         Texture2D kinectRGBVideo, controller, hazard;
         SpeechRec speech;
         Color[] controller_data, hazard_data;
+        kinectInit kinectIntialize;
 
         string message = "Collision: false";
+        private 
 
         bool controllerHit = false;
 
@@ -45,31 +46,17 @@ namespace KinectTest
 
         protected override void Initialize()
         {
-            resolution = new Vector2(640, 480);
             hazard_pos = new Vector2(400, 150);
-
+             
             kinectSensor = Runtime.Kinects[0];
-            kinectSensor.Initialize(RuntimeOptions.UseColor | RuntimeOptions.UseSkeletalTracking);
-            kinectSensor.SkeletonFrameReady += new EventHandler<SkeletonFrameReadyEventArgs>(kinectSensor_SkeletonFrameReady);
-            kinectSensor.NuiCamera.ElevationAngle = 5;
-            kinectSensor.VideoStream.Open(ImageStreamType.Video, 2, ImageResolution.Resolution640x480, ImageType.Color);
+            kinectIntialize = new kinectInit();            
+            kinectIntialize.initKinectNui(kinectSensor);
             kinectSensor.VideoFrameReady += new EventHandler<ImageFrameReadyEventArgs>(kinectSensor_VideoFrameReady);
-
-            kinectSensor.SkeletonEngine.TransformSmooth = true;
-            TransformSmoothParameters p = new TransformSmoothParameters
-            {
-                Smoothing = 0.75f,
-                Correction = 0.0f,
-                Prediction = 0.0f,
-                JitterRadius = 0.05f,
-                MaxDeviationRadius = 0.04f
-            };
-            kinectSensor.SkeletonEngine.SmoothParameters = p;
+            kinectIntialize.smoothKinectNui(kinectSensor);
 
             speech = new SpeechRec();
             speech.initSpeech();
             base.Initialize();
-
         }
 
         protected override void LoadContent()
@@ -87,20 +74,6 @@ namespace KinectTest
 
             hazard_data = new Color[hazard.Width * hazard.Height];
             hazard.GetData(hazard_data);
-
-        }
-
-        private void kinectSensor_SkeletonFrameReady(object sender, SkeletonFrameReadyEventArgs e)
-        {
-            foreach (SkeletonData s in e.SkeletonFrame.Skeletons)
-            {
-                if (s.TrackingState == SkeletonTrackingState.Tracked)
-                {
-                    skeleton = s;
-                    Joint rightHandJoint = skeleton.Joints[JointID.HandRight];
-                    position = new Vector2((((0.5f * rightHandJoint.Position.X) + 0.5f) * (resolution.X)), (((-0.5f * rightHandJoint.Position.Y) + 0.5f) * (resolution.Y)));
-                }
-            }
         }
 
         private void kinectSensor_VideoFrameReady(object sender, ImageFrameReadyEventArgs e)
@@ -130,7 +103,7 @@ namespace KinectTest
 
         protected override void Update(GameTime gameTime)
         {
-
+            position = kinectIntialize.Pos;
             Rectangle controllerRectangle = new Rectangle((int)position.X, (int)position.Y, controller.Width, controller.Height);
             Rectangle hazardRectangle = new Rectangle((int)hazard_pos.X, (int)hazard_pos.Y, hazard.Width, hazard.Height);
             CollisionDetection collision = new CollisionDetection();
