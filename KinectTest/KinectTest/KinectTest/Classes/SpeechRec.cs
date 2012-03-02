@@ -17,6 +17,8 @@ namespace KinectTest
         Stream stream;
         string speechMsg;
         string RecognizerId = "SR_MS_en-US_Kinect_10.0";
+        public bool selected = false;
+
 
         public void initSpeech()
         {
@@ -77,6 +79,7 @@ namespace KinectTest
             if (e.Result.Text == "scalpal")
             {
                 speechMsg = ": Scalpal Selected!";
+                selected = true;    
             }
             else if (e.Result.Text == "syringe")
             {

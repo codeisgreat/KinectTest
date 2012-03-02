@@ -22,7 +22,7 @@ namespace KinectTest
         {
             run.Initialize(RuntimeOptions.UseColor | RuntimeOptions.UseSkeletalTracking);
             run.SkeletonFrameReady += new EventHandler<SkeletonFrameReadyEventArgs>(kinectSensor_SkeletonFrameReady);
-            run.NuiCamera.ElevationAngle = 5;
+            run.NuiCamera.ElevationAngle = 8;
             run.VideoStream.Open(ImageStreamType.Video, 2, ImageResolution.Resolution640x480, ImageType.Color);
         }
 
@@ -46,7 +46,7 @@ namespace KinectTest
             {
                 if (s.TrackingState == SkeletonTrackingState.Tracked)
                 {
-                    resolution = new Vector2(640, 480);
+                    resolution = new Vector2(512, 512);
                     skeleton = s;
                     rightHandJoint = skeleton.Joints[JointID.HandRight];
                     position = new Vector2((((0.5f * rightHandJoint.Position.X) + 0.5f) * (resolution.X)), (((-0.5f * rightHandJoint.Position.Y) + 0.5f) * (resolution.Y)));

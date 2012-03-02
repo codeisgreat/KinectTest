@@ -24,29 +24,35 @@ namespace KinectTest
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         SpriteFont font;
-        Vector2 position,font_pos, hazard_pos;
-        Texture2D kinectRGBVideo, controller, hazard;
+        Vector2 dest,position,font_pos, hazard_pos,cursor;
+        Texture2D cursorTex,texture,kinectRGBVideo, controller, hazard;
         SpeechRec speech;
-        Color[] controller_data, hazard_data;
+        Color[] controller_data, hazard_data,buffer;
         kinectInit kinectIntialize;
+        Rectangle bufferRect,cursorRect;
 
         string message = "Collision: false";
-        private 
+        string speechIn;
 
         bool controllerHit = false;
+
+        int textureWidth;
 
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
-            Content.RootDirectory = "Content";
-
-            graphics.PreferredBackBufferWidth = 640;
-            graphics.PreferredBackBufferHeight = 480;
+            
+            Content.RootDirectory = "Content";   
         }
 
         protected override void Initialize()
         {
-            hazard_pos = new Vector2(400, 150);
+            graphics.IsFullScreen = false;
+            graphics.PreferredBackBufferWidth = 512;
+            graphics.PreferredBackBufferHeight = 512;
+            graphics.ApplyChanges();
+
+            hazard_pos = new Vector2(300, 150);
              
             kinectSensor = Runtime.Kinects[0];
             kinectIntialize = new kinectInit();            
@@ -56,6 +62,40 @@ namespace KinectTest
 
             speech = new SpeechRec();
             speech.initSpeech();
+            speechIn = speech.returnMsg();
+
+            //Painting code
+            textureWidth = 512;
+
+            texture = new Texture2D(GraphicsDevice, textureWidth, textureWidth);
+
+            buffer = new Color[textureWidth * textureWidth];
+            for (int i = 0; i < textureWidth * textureWidth; i++)
+            {
+                 //buffer[i] = Color.Black;
+                 buffer[i] = Color.Transparent;
+            }
+            bufferRect = new Rectangle(0, 0, textureWidth, textureWidth);
+
+            UpdateTexture();
+
+            cursor = Vector2.Zero;
+            cursorRect = new Rectangle(0, 0, 10,10);
+
+            UpdateCursor();
+
+            //cursor
+            cursorTex = new Texture2D(GraphicsDevice, 2, 2);
+            Color[] data = new Color[4];
+            data[0] = Color.White;
+            data[1] = Color.White;
+            data[2] = Color.White;
+            data[3] = Color.White;
+            cursorTex.SetData<Color>(data);
+
+            dest = Vector2.Zero;
+
+
             base.Initialize();
         }
 
@@ -64,7 +104,7 @@ namespace KinectTest
             spriteBatch = new SpriteBatch(GraphicsDevice);
             font = Content.Load<SpriteFont>("Arial");
 
-            kinectRGBVideo = new Texture2D(GraphicsDevice, 1337, 1337);
+            kinectRGBVideo = new Texture2D(GraphicsDevice, 512, 512);
 
             controller = Content.Load<Texture2D>("reddot");
             hazard = Content.Load<Texture2D>("hazard");
@@ -103,6 +143,23 @@ namespace KinectTest
 
         protected override void Update(GameTime gameTime)
         {
+           // Console.WriteLine("msg: "+speech.selected);
+            UpdateCursor();
+            UpdateTexture();
+
+            //paint
+            if (speech.selected == true)
+            {
+                if ((int)kinectIntialize.Pos.Y < 512 || (int)kinectIntialize.Pos.X < 512)
+                {
+                    buffer[(int)kinectIntialize.Pos.Y * textureWidth + (int)kinectIntialize.Pos.X] = Color.Green;
+              //  Console.WriteLine("cursor " + cursor);
+                UpdateTexture();
+                }
+                
+            }
+
+            //Kinect stuff
             position = kinectIntialize.Pos;
             Rectangle controllerRectangle = new Rectangle((int)position.X, (int)position.Y, controller.Width, controller.Height);
             Rectangle hazardRectangle = new Rectangle((int)hazard_pos.X, (int)hazard_pos.Y, hazard.Width, hazard.Height);
@@ -122,14 +179,15 @@ namespace KinectTest
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
+            //paint
+
+            //kinect
             spriteBatch.Begin();
-
-            spriteBatch.Draw(kinectRGBVideo, new Rectangle(0, 0, 640, 480), Color.White);
-            spriteBatch.DrawString(font, message, font_pos = new Vector2(0, 430), Color.White);
-            spriteBatch.DrawString(font, "Speech Recognition" + speech.returnMsg(), font_pos = new Vector2(0, 450), Color.White);
-            spriteBatch.Draw(controller, position, Color.White);
+            spriteBatch.Draw(kinectRGBVideo, new Rectangle(0, 0, 512, 512), Color.White);
+            spriteBatch.DrawString(font, message, font_pos = new Vector2(0, 470), Color.White);
+            spriteBatch.DrawString(font, "Speech Recognition" + speech.returnMsg(), font_pos = new Vector2(0, 490), Color.White);
+            //spriteBatch.Draw(controller, position, Color.White);
             spriteBatch.Draw(hazard, hazard_pos, Color.White);
-
             if (controllerHit == true)
             {
                 message = "Collision: true";
@@ -142,7 +200,28 @@ namespace KinectTest
             }
 
             spriteBatch.End();
+
+            spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.None, RasterizerState.CullNone);
+            spriteBatch.Draw(texture, bufferRect, Color.White);
+
+            spriteBatch.Draw(cursorTex, cursorRect, Color.White);
+
+            spriteBatch.End();
+
+            
             base.Draw(gameTime);
         }
+
+        private void UpdateTexture()
+        {
+            texture.SetData<Color>(buffer);
+        }
+
+        private void UpdateCursor()
+        {
+            cursorRect.X = (int)kinectIntialize.Pos.X;//(int)(cursor.X * 512 / textureWidth);
+            cursorRect.Y = (int)kinectIntialize.Pos.Y;//(int)(cursor.Y * 512 / textureWidth);
+        }
+
     }
 }
