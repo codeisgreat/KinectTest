@@ -1,0 +1,12 @@
+TODO:
+
+Create an Array to hold vector2 positions
+
+make a for loop to loop through the position on the array list and for each position draw the red
+dot there.
+
+POSSIBLE ISSUES:
+
+the array is going to be dynamic in the sense that its goingt o be read and written to at the same time.
+Sync it maybe?
+

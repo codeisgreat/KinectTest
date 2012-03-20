@@ -1,2 +1,4 @@
 C:\Users\Cathal\Documents\Visual Studio 2010\Projects\KinectTest\KinectTest\KinectTestContent\obj\x86\Debug\ResolveAssemblyReference.cache
 C:\gitrepository\KinectTest\KinectTest\KinectTestContent\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\gitrepo\KinectTest\KinectTest\KinectTestContent\obj\x86\Debug\ResolveAssemblyReference.cache
+G:\-=COLLEGE=-\KINECT PROJECT 6-3-12\KinectTest\KinectTest\KinectTestContent\obj\x86\Debug\ResolveAssemblyReference.cache

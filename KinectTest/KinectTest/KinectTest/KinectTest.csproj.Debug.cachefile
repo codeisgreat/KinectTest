@@ -1,4 +1,13 @@
-Content\reddot.xnb
-Content\arial.xnb
-Content\hazard.xnb
-Content\hazard_hit.xnb
+Content\Images\reddot.xnb
+Content\Font\arial.xnb
+Content\Images\rgb_bg.xnb
+Content\Images\textBuffer_bg.xnb
+Content\Images\tool_scalpal.xnb
+Content\Images\tool_scalpal_over.xnb
+Content\Images\tool_suction.xnb
+Content\Images\tool_suction_over.xnb
+Content\Images\tool_syringe.xnb
+Content\Images\tool_syringe_over.xnb
+Content\Images\tool_hand.xnb
+Content\Images\tool_hand_over.xnb
+Content\Images\selectedTool.xnb

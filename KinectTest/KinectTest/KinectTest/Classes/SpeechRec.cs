@@ -32,9 +32,10 @@ namespace KinectTest
             speechEngine = new SpeechRecognitionEngine(rec.Id);
 
             var choices = new Choices();
-            choices.Add("scalpal");
-            choices.Add("syringe");
-            choices.Add("suction");
+            choices.Add("select scalpal");
+            choices.Add("select syringe");
+            choices.Add("select suction");
+            choices.Add("select hand");
             GrammarBuilder gb = new GrammarBuilder();
             gb.Culture = rec.Culture;
             gb.Append(choices);
@@ -76,18 +77,22 @@ namespace KinectTest
 
         void sre_SpeechRecognized(object sender, SpeechRecognizedEventArgs e)
         {
-            if (e.Result.Text == "scalpal")
+            if (e.Result.Text == "select scalpal")
             {
-                speechMsg = ": Scalpal Selected!";
+                speechMsg = ": Scalpal Recognized!";
                 selected = true;    
             }
-            else if (e.Result.Text == "syringe")
+            else if (e.Result.Text == "select syringe")
             {
-                speechMsg = ": Syringe Selected!";
+                speechMsg = ": Syringe Recognized!";
             }
-            else if (e.Result.Text == "suction")
+            else if (e.Result.Text == "select suction")
             {
-                speechMsg = ": Suction Selected!";
+                speechMsg = ": Suction Recognized!";
+            }
+            else if (e.Result.Text == "select hand")
+            {
+                speechMsg = ": Hand Recognized!";
             }
             Console.Write("\rSpeech Recognized: \t{0} \n", e.Result.Text);
         }

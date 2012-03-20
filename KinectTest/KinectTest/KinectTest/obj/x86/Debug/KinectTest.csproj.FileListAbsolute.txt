@@ -6,13 +6,42 @@ c:\users\cathal\documents\visual studio 2010\Projects\KinectTest\KinectTest\Kine
 c:\users\cathal\documents\visual studio 2010\Projects\KinectTest\KinectTest\KinectTest\obj\x86\Debug\KinectTest.pdb
 c:\users\cathal\documents\visual studio 2010\Projects\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\overlay.xnb
 C:\Users\Cathal\Documents\Visual Studio 2010\Projects\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\reddot.xnb
-C:\gitrepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\reddot.xnb
 C:\gitrepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\KinectTest.exe
 C:\gitrepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\KinectTest.pdb
 C:\gitrepository\KinectTest\KinectTest\KinectTest\obj\x86\Debug\ResolveAssemblyReference.cache
 C:\gitrepository\KinectTest\KinectTest\KinectTest\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\gitrepository\KinectTest\KinectTest\KinectTest\obj\x86\Debug\KinectTest.exe
 C:\gitrepository\KinectTest\KinectTest\KinectTest\obj\x86\Debug\KinectTest.pdb
-C:\gitrepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\arial.xnb
-C:\gitrepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\hazard.xnb
-C:\gitrepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\hazard_hit.xnb
+C:\gitrepo\KinectTest\KinectTest\KinectTest\bin\x86\Debug\KinectTest.exe
+C:\gitrepo\KinectTest\KinectTest\KinectTest\bin\x86\Debug\KinectTest.pdb
+C:\gitrepo\KinectTest\KinectTest\KinectTest\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\gitrepo\KinectTest\KinectTest\KinectTest\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\gitrepo\KinectTest\KinectTest\KinectTest\obj\x86\Debug\KinectTest.exe
+C:\gitrepo\KinectTest\KinectTest\KinectTest\obj\x86\Debug\KinectTest.pdb
+C:\gitrepo\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Images\reddot.xnb
+C:\gitrepo\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Images\hazard.xnb
+C:\gitrepo\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Images\hazard_hit.xnb
+C:\gitrepo\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Font\arial.xnb
+G:\-=COLLEGE=-\KINECT PROJECT 6-3-12\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Images\reddot.xnb
+G:\-=COLLEGE=-\KINECT PROJECT 6-3-12\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Images\hazard.xnb
+G:\-=COLLEGE=-\KINECT PROJECT 6-3-12\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Images\hazard_hit.xnb
+G:\-=COLLEGE=-\KINECT PROJECT 6-3-12\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Font\arial.xnb
+G:\-=COLLEGE=-\KINECT PROJECT 6-3-12\KinectTest\KinectTest\KinectTest\bin\x86\Debug\KinectTest.exe
+G:\-=COLLEGE=-\KINECT PROJECT 6-3-12\KinectTest\KinectTest\KinectTest\bin\x86\Debug\KinectTest.pdb
+G:\-=COLLEGE=-\KINECT PROJECT 6-3-12\KinectTest\KinectTest\KinectTest\obj\x86\Debug\ResolveAssemblyReference.cache
+G:\-=COLLEGE=-\KINECT PROJECT 6-3-12\KinectTest\KinectTest\KinectTest\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+G:\-=COLLEGE=-\KINECT PROJECT 6-3-12\KinectTest\KinectTest\KinectTest\obj\x86\Debug\KinectTest.exe
+G:\-=COLLEGE=-\KINECT PROJECT 6-3-12\KinectTest\KinectTest\KinectTest\obj\x86\Debug\KinectTest.pdb
+C:\gitrepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Images\reddot.xnb
+C:\gitrepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Font\arial.xnb
+C:\gitrepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Images\rgb_bg.xnb
+C:\gitrepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Images\textBuffer_bg.xnb
+C:\gitrepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Images\tool_scalpal.xnb
+C:\gitrepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Images\tool_scalpal_over.xnb
+C:\gitrepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Images\tool_suction.xnb
+C:\gitrepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Images\tool_suction_over.xnb
+C:\gitrepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Images\tool_syringe.xnb
+C:\gitrepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Images\tool_syringe_over.xnb
+C:\gitrepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Images\tool_hand.xnb
+C:\gitrepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Images\tool_hand_over.xnb
+C:\gitrepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Images\selectedTool.xnb
