@@ -113,7 +113,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\CollisionDetection.cs" />
-    <Compile Include="Classes\kinectInit.cs" />
+    <Compile Include="Classes\LoadKinect.cs" />
     <Compile Include="Classes\SpeechRec.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />

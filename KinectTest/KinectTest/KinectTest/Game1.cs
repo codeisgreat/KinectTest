@@ -152,11 +152,12 @@ namespace KinectTest
             spriteBatch.Draw(tool_suction, suction_pos, Color.White);
             spriteBatch.Draw(tool_syringe, syringe_pos, Color.White);
             spriteBatch.Draw(tool_hand, hand_pos, Color.White);
-            spriteBatch.DrawString(font, currentStateMsg, new Vector2(565, 465), Color.Black);
+            spriteBatch.DrawString(font, currentStateMsg, new Vector2(565, 465), Color.AliceBlue);
             spriteBatch.DrawString(font, message, font_pos = new Vector2(25, 520), Color.Green);
             spriteBatch.DrawString(font, "Speech Recognition" + speech.returnMsg(), font_pos = new Vector2(25,540), Color.Green);            
             spriteBatch.Draw(cursor, cursorPosition, Color.White);
             toolCollisionUpdateImage();
+            nurseSelectTool();
 
             switch (currentState)
             {
@@ -177,6 +178,26 @@ namespace KinectTest
             base.Draw(gameTime);
         }
 
+        private void nurseSelectTool()
+        {
+            if (speech.returnMsg() == "nurse scalpal")
+            {
+                currentState = cursorState.Scalpal;
+            }
+            else if (speech.returnMsg() == "nurse suction")
+            {
+                currentState = cursorState.Suction;
+            }
+            else if (speech.returnMsg() == "nurse syringe")
+            {
+                currentState = cursorState.Syringe;
+            }
+            else if (speech.returnMsg() == "nurse hand")
+            {
+                currentState = cursorState.Hand;
+            }
+        }
+       
         private void toolCollisionUpdateImage()
         {
             //If the cursor is over the Image for the Scalpal activate the "over" highlighted image

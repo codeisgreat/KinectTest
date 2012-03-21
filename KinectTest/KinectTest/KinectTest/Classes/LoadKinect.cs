@@ -33,7 +33,7 @@ namespace KinectTest
             run.Initialize(RuntimeOptions.UseColor | RuntimeOptions.UseSkeletalTracking);
             run.SkeletonFrameReady += new EventHandler<SkeletonFrameReadyEventArgs>(kinectSensor_SkeletonFrameReady);
             run.VideoFrameReady += new EventHandler<ImageFrameReadyEventArgs>(kinectSensor_VideoFrameReady);
-            run.NuiCamera.ElevationAngle = -2;
+            run.NuiCamera.ElevationAngle = 6;
             run.VideoStream.Open(ImageStreamType.Video, 2, ImageResolution.Resolution1280x1024, ImageType.Color);
         }
 

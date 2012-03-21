@@ -17,9 +17,7 @@ namespace KinectTest
         Stream stream;
         string speechMsg;
         string RecognizerId = "SR_MS_en-US_Kinect_10.0";
-        public bool selected = false;
-
-
+        
         public void initSpeech()
         {
             kinectSource = new KinectAudioSource();
@@ -36,6 +34,10 @@ namespace KinectTest
             choices.Add("select syringe");
             choices.Add("select suction");
             choices.Add("select hand");
+            choices.Add("nurse scalpal");
+            choices.Add("nurse syringe");
+            choices.Add("nurse suction");
+            choices.Add("nurse hand");
             GrammarBuilder gb = new GrammarBuilder();
             gb.Culture = rec.Culture;
             gb.Append(choices);
@@ -77,10 +79,10 @@ namespace KinectTest
 
         void sre_SpeechRecognized(object sender, SpeechRecognizedEventArgs e)
         {
+            // used for button items
             if (e.Result.Text == "select scalpal")
             {
-                speechMsg = ": Scalpal Recognized!";
-                selected = true;    
+                speechMsg = ": Scalpal Recognized!";    
             }
             else if (e.Result.Text == "select syringe")
             {
@@ -94,7 +96,25 @@ namespace KinectTest
             {
                 speechMsg = ": Hand Recognized!";
             }
-            Console.Write("\rSpeech Recognized: \t{0} \n", e.Result.Text);
+
+            // nurse items
+            if (e.Result.Text == "nurse scalpal")
+            {
+                speechMsg = "nurse scalpal";
+            }
+            else if (e.Result.Text == "nurse suction")
+            {
+                speechMsg = "nurse suction";
+            }
+            else if (e.Result.Text == "nurse syringe")
+            {
+                speechMsg = "nurse syringe";
+            }
+            else if (e.Result.Text == "nurse hand")
+            {
+                speechMsg = "nurse hand";
+            }
+
         }
     }
 
