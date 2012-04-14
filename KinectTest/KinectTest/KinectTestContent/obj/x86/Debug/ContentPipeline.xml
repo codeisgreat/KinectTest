@@ -2,31 +2,13 @@
 <XnaContent xmlns:Pipeline="Microsoft.Xna.Framework.Content.Pipeline">
   <Asset Type="Pipeline:BuildItemCollection">
     <Item>
-      <Source>Images\reddot.png</Source>
-      <Name>Images\reddot</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\gitrepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Images\reddot.xnb</Output>
-      <Time>2012-03-02T07:41:36+00:00</Time>
-    </Item>
-    <Item>
-      <Source>Font\arial.spritefont</Source>
-      <Name>Font\arial</Name>
-      <Importer>FontDescriptionImporter</Importer>
-      <Processor>FontDescriptionProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\gitrepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Font\arial.xnb</Output>
-      <Time>2012-03-02T07:41:36+00:00</Time>
-    </Item>
-    <Item>
       <Source>Images\rgb_bg.png</Source>
       <Name>Images\rgb_bg</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\gitrepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Images\rgb_bg.xnb</Output>
-      <Time>2012-03-16T13:20:09.6775403+00:00</Time>
+      <Output>C:\gitRepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Images\rgb_bg.xnb</Output>
+      <Time>2012-04-05T13:25:09.0920704+01:00</Time>
     </Item>
     <Item>
       <Source>Images\textBuffer_bg.png</Source>
@@ -34,8 +16,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\gitrepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Images\textBuffer_bg.xnb</Output>
-      <Time>2012-03-16T13:20:41.8056063+00:00</Time>
+      <Output>C:\gitRepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Images\textBuffer_bg.xnb</Output>
+      <Time>2012-04-05T13:25:09.0940705+01:00</Time>
     </Item>
     <Item>
       <Source>Images\tool_scalpal.png</Source>
@@ -43,8 +25,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\gitrepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Images\tool_scalpal.xnb</Output>
-      <Time>2012-03-16T14:04:59.8304204+00:00</Time>
+      <Output>C:\gitRepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Images\tool_scalpal.xnb</Output>
+      <Time>2012-04-05T13:25:09.0970707+01:00</Time>
     </Item>
     <Item>
       <Source>Images\tool_scalpal_over.png</Source>
@@ -52,8 +34,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\gitrepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Images\tool_scalpal_over.xnb</Output>
-      <Time>2012-03-16T14:06:52.9837411+00:00</Time>
+      <Output>C:\gitRepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Images\tool_scalpal_over.xnb</Output>
+      <Time>2012-04-05T13:25:09.0980707+01:00</Time>
     </Item>
     <Item>
       <Source>Images\tool_suction.png</Source>
@@ -61,8 +43,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\gitrepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Images\tool_suction.xnb</Output>
-      <Time>2012-03-16T14:40:27.9648399+00:00</Time>
+      <Output>C:\gitRepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Images\tool_suction.xnb</Output>
+      <Time>2012-04-05T13:25:09.0990708+01:00</Time>
     </Item>
     <Item>
       <Source>Images\tool_suction_over.png</Source>
@@ -70,8 +52,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\gitrepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Images\tool_suction_over.xnb</Output>
-      <Time>2012-03-16T14:40:58.4248819+00:00</Time>
+      <Output>C:\gitRepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Images\tool_suction_over.xnb</Output>
+      <Time>2012-04-05T13:25:09.1000708+01:00</Time>
     </Item>
     <Item>
       <Source>Images\tool_syringe.png</Source>
@@ -79,8 +61,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\gitrepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Images\tool_syringe.xnb</Output>
-      <Time>2012-03-16T14:55:50.449909+00:00</Time>
+      <Output>C:\gitRepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Images\tool_syringe.xnb</Output>
+      <Time>2012-04-05T13:25:09.1010709+01:00</Time>
     </Item>
     <Item>
       <Source>Images\tool_syringe_over.png</Source>
@@ -88,8 +70,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\gitrepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Images\tool_syringe_over.xnb</Output>
-      <Time>2012-03-16T14:56:16.1456408+00:00</Time>
+      <Output>C:\gitRepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Images\tool_syringe_over.xnb</Output>
+      <Time>2012-04-05T13:25:09.1020709+01:00</Time>
     </Item>
     <Item>
       <Source>Images\tool_hand.png</Source>
@@ -97,8 +79,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\gitrepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Images\tool_hand.xnb</Output>
-      <Time>2012-03-16T15:13:38.1356715+00:00</Time>
+      <Output>C:\gitRepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Images\tool_hand.xnb</Output>
+      <Time>2012-04-05T13:25:09.0950705+01:00</Time>
     </Item>
     <Item>
       <Source>Images\tool_hand_over.png</Source>
@@ -106,8 +88,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\gitrepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Images\tool_hand_over.xnb</Output>
-      <Time>2012-03-16T15:14:06.7732274+00:00</Time>
+      <Output>C:\gitRepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Images\tool_hand_over.xnb</Output>
+      <Time>2012-04-05T13:25:09.0960706+01:00</Time>
     </Item>
     <Item>
       <Source>Images\selectedTool.png</Source>
@@ -115,8 +97,143 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\gitrepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Images\selectedTool.xnb</Output>
-      <Time>2012-03-16T15:31:03.9412817+00:00</Time>
+      <Output>C:\gitRepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Images\selectedTool.xnb</Output>
+      <Time>2012-04-05T13:25:09.0930704+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Images\brush.png</Source>
+      <Name>Images\brush</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\gitRepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Images\brush.xnb</Output>
+      <Time>2012-04-05T13:25:09.1120715+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Images\heart.png</Source>
+      <Name>Images\heart</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\gitRepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Images\heart.xnb</Output>
+      <Time>2012-04-10T18:42:07.4331822+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Images\useable_hand.png</Source>
+      <Name>Images\useable_hand</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\gitRepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Images\useable_hand.xnb</Output>
+      <Time>2012-04-10T18:57:30.7330518+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Images\useable_scalpal.png</Source>
+      <Name>Images\useable_scalpal</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\gitRepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Images\useable_scalpal.xnb</Output>
+      <Time>2012-04-11T15:34:05.3832533+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Images\useable_suction.png</Source>
+      <Name>Images\useable_suction</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\gitRepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Images\useable_suction.xnb</Output>
+      <Time>2012-04-11T15:36:08.2327484+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Images\useable_syringe.png</Source>
+      <Name>Images\useable_syringe</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\gitRepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Images\useable_syringe.xnb</Output>
+      <Time>2012-04-10T18:58:17.7867063+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Images\cursor.png</Source>
+      <Name>Images\cursor</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\gitRepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Images\cursor.xnb</Output>
+      <Time>2012-04-10T19:03:46.8270893+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Font\lucidaConsole.spritefont</Source>
+      <Name>Font\lucidaConsole</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\gitRepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Font\lucidaConsole.xnb</Output>
+      <Time>2012-04-11T16:08:48.3948044+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Images\consoleBg.png</Source>
+      <Name>Images\consoleBg</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\gitRepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Images\consoleBg.xnb</Output>
+      <Time>2012-04-11T16:29:01.4657782+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Images\xMark.png</Source>
+      <Name>Images\xMark</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\gitRepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Images\xMark.xnb</Output>
+      <Time>2012-04-11T17:18:34.4926066+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Font\arial.spritefont</Source>
+      <Name>Font\arial</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\gitRepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Font\arial.xnb</Output>
+      <Time>2012-04-11T17:23:37.3446681+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Images\accuracyBg.png</Source>
+      <Name>Images\accuracyBg</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\gitRepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Images\accuracyBg.xnb</Output>
+      <Time>2012-04-12T15:48:04.1859803+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Images\heart_cut.png</Source>
+      <Name>Images\heart_cut</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\gitRepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Images\heart_cut.xnb</Output>
+      <Time>2012-04-14T13:19:11.1819355+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Images\heartCutEnd.png</Source>
+      <Name>Images\heartCutEnd</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\gitRepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Images\heartCutEnd.xnb</Output>
+      <Time>2012-04-14T13:19:05.5766328+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Images\heartCutStart.png</Source>
+      <Name>Images\heartCutStart</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\gitRepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Images\heartCutStart.xnb</Output>
+      <Time>2012-04-14T13:19:00.5488501+01:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -124,10 +241,10 @@
       <TargetProfile>HiDef</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>C:\gitrepository\KinectTest\KinectTest\KinectTestContent\</RootDirectory>
-      <LoggerRootDirectory>C:\gitrepository\KinectTest\KinectTest\KinectTest\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\gitrepository\KinectTest\KinectTest\KinectTestContent\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>C:\gitrepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>C:\gitRepository\KinectTest\KinectTest\KinectTestContent\</RootDirectory>
+      <LoggerRootDirectory>C:\gitRepository\KinectTest\KinectTest\KinectTest\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\gitRepository\KinectTest\KinectTest\KinectTestContent\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\gitRepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>
@@ -156,7 +273,7 @@
       </Assembly>
       <Assembly>
         <Key>C:\Windows\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
-        <Value>2011-10-29T15:57:16.8773741+01:00</Value>
+        <Value>2012-04-05T13:30:54.7161189+01:00</Value>
       </Assembly>
     </Assemblies>
   </Asset>

@@ -1,5 +1,3 @@
-Content\Images\reddot.xnb
-Content\Font\arial.xnb
 Content\Images\rgb_bg.xnb
 Content\Images\textBuffer_bg.xnb
 Content\Images\tool_scalpal.xnb
@@ -11,3 +9,18 @@ Content\Images\tool_syringe_over.xnb
 Content\Images\tool_hand.xnb
 Content\Images\tool_hand_over.xnb
 Content\Images\selectedTool.xnb
+Content\Images\brush.xnb
+Content\Images\heart.xnb
+Content\Images\useable_hand.xnb
+Content\Images\useable_scalpal.xnb
+Content\Images\useable_suction.xnb
+Content\Images\useable_syringe.xnb
+Content\Images\cursor.xnb
+Content\Font\lucidaConsole.xnb
+Content\Images\consoleBg.xnb
+Content\Images\xMark.xnb
+Content\Font\arial.xnb
+Content\Images\accuracyBg.xnb
+Content\Images\heart_cut.xnb
+Content\Images\heartCutEnd.xnb
+Content\Images\heartCutStart.xnb

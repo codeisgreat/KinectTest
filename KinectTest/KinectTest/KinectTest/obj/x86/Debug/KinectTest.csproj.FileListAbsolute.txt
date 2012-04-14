@@ -32,8 +32,6 @@ G:\-=COLLEGE=-\KINECT PROJECT 6-3-12\KinectTest\KinectTest\KinectTest\obj\x86\De
 G:\-=COLLEGE=-\KINECT PROJECT 6-3-12\KinectTest\KinectTest\KinectTest\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 G:\-=COLLEGE=-\KINECT PROJECT 6-3-12\KinectTest\KinectTest\KinectTest\obj\x86\Debug\KinectTest.exe
 G:\-=COLLEGE=-\KINECT PROJECT 6-3-12\KinectTest\KinectTest\KinectTest\obj\x86\Debug\KinectTest.pdb
-C:\gitrepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Images\reddot.xnb
-C:\gitrepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Font\arial.xnb
 C:\gitrepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Images\rgb_bg.xnb
 C:\gitrepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Images\textBuffer_bg.xnb
 C:\gitrepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Images\tool_scalpal.xnb
@@ -45,3 +43,18 @@ C:\gitrepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Images\t
 C:\gitrepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Images\tool_hand.xnb
 C:\gitrepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Images\tool_hand_over.xnb
 C:\gitrepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Images\selectedTool.xnb
+C:\gitRepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Images\brush.xnb
+C:\gitRepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Images\heart.xnb
+C:\gitRepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Images\useable_hand.xnb
+C:\gitRepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Images\useable_scalpal.xnb
+C:\gitRepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Images\useable_suction.xnb
+C:\gitRepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Images\useable_syringe.xnb
+C:\gitRepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Images\cursor.xnb
+C:\gitRepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Font\lucidaConsole.xnb
+C:\gitRepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Images\consoleBg.xnb
+C:\gitRepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Images\xMark.xnb
+C:\gitRepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Font\arial.xnb
+C:\gitRepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Images\accuracyBg.xnb
+C:\gitRepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Images\heart_cut.xnb
+C:\gitRepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Images\heartCutEnd.xnb
+C:\gitRepository\KinectTest\KinectTest\KinectTest\bin\x86\Debug\Content\Images\heartCutStart.xnb

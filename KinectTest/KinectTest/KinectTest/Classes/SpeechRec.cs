@@ -38,6 +38,12 @@ namespace KinectTest
             choices.Add("nurse syringe");
             choices.Add("nurse suction");
             choices.Add("nurse hand");
+            choices.Add("show console");
+            choices.Add("hide console");
+            choices.Add("begin incision");
+            choices.Add("end incision");
+
+            choices.Add("inject");
             GrammarBuilder gb = new GrammarBuilder();
             gb.Culture = rec.Culture;
             gb.Append(choices);
@@ -100,21 +106,42 @@ namespace KinectTest
             // nurse items
             if (e.Result.Text == "nurse scalpal")
             {
-                speechMsg = "nurse scalpal";
+                speechMsg = ": nurse scalpal";
             }
             else if (e.Result.Text == "nurse suction")
             {
-                speechMsg = "nurse suction";
+                speechMsg = ": nurse suction";
             }
             else if (e.Result.Text == "nurse syringe")
             {
-                speechMsg = "nurse syringe";
+                speechMsg = ": nurse syringe";
             }
             else if (e.Result.Text == "nurse hand")
             {
-                speechMsg = "nurse hand";
+                speechMsg = ": nurse hand";
             }
 
+            if (e.Result.Text == "begin incision")
+            {
+                speechMsg = ": begin incision";
+            }
+            else if (e.Result.Text == "end incision")
+            {
+                speechMsg = ": end incision";
+            }
+            if (e.Result.Text == "show console")
+            {
+                speechMsg = ": show console";
+            }
+            else if (e.Result.Text == "hide console")
+            {
+                speechMsg = ": hide console";
+            }
+
+            if (e.Result.Text == "inject")
+            {
+                speechMsg = ": inject";
+            }
         }
     }
 
